@@ -10,7 +10,7 @@ def health_check():
     """Health check endpoint"""
     return {"message": "I am healthy"}
 
-@app.get("/datetime")
+@app.get("/date")
 def get_utc_time():
     """Get current UTC time"""
     utc_now = datetime.utcnow()
