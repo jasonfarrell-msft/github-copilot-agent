@@ -51,3 +51,7 @@ venv.bak/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Bicep generated files
+*.json
+!*.parameters.json
