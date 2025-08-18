@@ -1,0 +1,12 @@
+resourceGroups:
+  - name: rg-mcp-test
+    location: eastus
+    resources:
+      - type: Microsoft.Storage/storageAccounts
+        name: mystorageacctmx01
+        location: eastus
+        sku: Standard_LRS
+      - type: Microsoft.Web/sites
+        name: mywebappmx01
+        location: eastus
+        plan: myappserviceplanmx01
