@@ -34,6 +34,7 @@ jobs:
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
-
+        working-directory: src
+      
       - name: Install SQLite
         run: sudo apt update && sudo apt install sqlite3
