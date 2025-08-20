@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Generate Bicep from yaml files
-        uses: Azure/mcp-server-bicepschema-action@v1
+        uses: Azure/mcp-bicepschema-action@v1
         with:
           input: infra/*.yaml
           output: infra/
