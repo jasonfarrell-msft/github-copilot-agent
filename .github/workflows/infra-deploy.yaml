@@ -1,1 +1,29 @@
 name: Infra Deployment
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - infra/**
+      - .github/workflows/infra-deploy.yaml
+
+jobs:
+  create-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Generate Bicep from yaml files
+        uses: Azure/mcp-server-bicepschema-action@v1
+        with:
+          input: infra/*.yaml
+          output: infra/
+        id: bicepschema
+
+      - name: Debug
+        run: |
+          echo "Bicep schema generated at: ${{ steps.bicepschema.outputs.output }}"
+          ls -la infra/
