@@ -10,3 +10,4 @@ resourceGroups:
         name: mywebappmx01
         location: eastus
         plan: myappserviceplanmx01
+        sku: B1
