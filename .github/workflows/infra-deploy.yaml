@@ -16,12 +16,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install MCP CLI
+        run: |
+          npm install -g @azure/mcp@latest
+
+      - name: Start MCP server
+        run: |
+          nohup npx @azure/mcp@latest server start --namespace bicepschema --read-only &
+          sleep 10 # Wait for server to start
+
       - name: Generate Bicep from yaml files
-        uses: Azure/mcp-bicepschema-action@v1
-        with:
-          input: infra/*.yaml
-          output: infra/
-        id: bicepschema
+        run: |
+          for yaml in infra/*.yaml; do
+            bicep_file="${yaml%.yaml}.bicep"
+            npx @azure/mcp@latest bicepschema "$yaml" > "$bicep_file"
+          done
+        shell: bash
 
       - name: Debug
         run: |
