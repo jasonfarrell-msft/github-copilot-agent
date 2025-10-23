@@ -1,3 +1,8 @@
+# Dockerfile for containerizing the FastAPI server
+#
+# Build: docker build -t github-copilot-agent .
+# Run:   docker run -p 8080:8080 github-copilot-agent
+#
 # Use Python 3.12 slim image as base
 FROM python:3.12-slim
 
